@@ -229,13 +229,9 @@ h2 {
   border: 1px solid var(--rule);
   border-radius: 6px;
   overflow: hidden;
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(0, 1.25fr);
 }
 .tool-main .text { padding: 26px 26px 24px; display: flex; flex-direction: column; gap: 12px; }
-.tool-main .shot { border: 0; border-left: 1px solid var(--rule); }
-.tool-main .shot { display: flex; align-items: center; padding: 12px; background: #F8F6F5; }
-.tool-main .shot img { width: 100%; height: auto; }
+.tool-main p { max-width: 68ch; }
 .tools { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 14px; }
 .tool {
   background: var(--surface);
@@ -247,13 +243,6 @@ h2 {
 .tool h3, .tool-main h3 { margin: 0; font: 600 18px/1.35 var(--font-body); }
 .tool p, .tool-main p { margin: 0; color: var(--muted); font-size: 15.5px; }
 .tool .label, .tool-main .label { color: var(--accent); }
-.ai-note {
-  margin: 0;
-  padding: 14px 18px;
-  border-left: 2px solid var(--teal);
-  background: var(--accent-soft);
-  font-size: 16px;
-}
 
 /* Работы */
 .works { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 22px 18px; }
@@ -368,8 +357,6 @@ dialog.viewer::backdrop { background: rgba(8, 14, 11, 0.72); }
 @media (max-width: 900px) {
   .block-grid { grid-template-columns: minmax(0, 1fr); gap: 24px; }
   .tools { grid-template-columns: minmax(0, 1fr); }
-  .tool-main { grid-template-columns: minmax(0, 1fr); }
-  .tool-main .shot { border-left: 0; border-top: 1px solid var(--rule); }
   .works { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 }
 @media (max-width: 760px) {
@@ -505,9 +492,6 @@ dialog.viewer::backdrop { background: rgba(8, 14, 11, 0.72); }
             <p>Google Таблицы со скриптом. Загружает из 1С карточки счетов 51 и 50, сверяет обороты с итогом, отсекает дубли и разносит операции по статьям по настраиваемым правилам. На выходе отчёт о движении денег и отчёт о прибылях и убытках по начислению.</p>
             <p>Для собственника ИИ собирает отчёт план-факт в презентацию с разбором отклонений по объектам.</p>
           </div>
-          <button class="shot" type="button" data-full="img/plan-fakt.png" data-caption="Слайд отчёта план-факт для группы отелей и ресторанов. Названия объектов изменены.">
-            <img src="img/plan-fakt.png" alt="Каскадная диаграмма: прибыль на 37,6 млн руб. меньше плана, разбор отклонений по объектам" loading="lazy">
-          </button>
         </article>
 
         <div class="tools">
@@ -526,10 +510,7 @@ dialog.viewer::backdrop { background: rgba(8, 14, 11, 0.72); }
             <h3>Фильтр вакансий hh.ru</h3>
             <p>Два Telegram-бота: каждое утро присылают свежие вакансии, отобранные и оценённые по моему профилю. Работают по расписанию без моего участия.</p>
           </article>
-        </div>
-
-        <p class="ai-note">Этот сайт я тоже собрал с ИИ, код открыт на <a href="https://github.com/Richo1010" target="_blank" rel="noopener">GitHub</a>.</p>
-      </div>
+        </div>      </div>
     </div>
   </section>
 
