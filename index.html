@@ -1,0 +1,725 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Очир Насунов · финансы и инвестиции</title>
+<meta name="description" content="Корпоративные финансы и инвестиции. 20+ лет в инвестициях и корпоративных финансах, более 70 млрд ₽ привлечённого финансирования. Автоматизирую финансовую службу с помощью ИИ.">
+<meta property="og:title" content="Очир Насунов · финансы и инвестиции">
+<meta property="og:description" content="20+ лет в инвестициях и корпоративных финансах. Более 70 млрд ₽ привлечённого финансирования. Автоматизация финслужбы с ИИ.">
+<meta property="og:image" content="img/photo.jpg">
+<meta property="og:type" content="profile">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700&family=Golos+Text:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: тёмно-синий первый экран с фото на закате; ниже «годовой отчёт» — колонка подписей разделов слева, содержание справа; сделки как tombstone-карточки инвестбанков */
+:root {
+  --paper: #F2F6F9;
+  --surface: #FFFFFF;
+  --ink: #0D2233;
+  --muted: #516476;
+  --rule: #D4DEE6;
+  --accent: #0E5C86;
+  --teal: #2A9FA6;
+  --accent-soft: #E0EEF5;
+  /* первый экран всегда тёмный, в обеих темах */
+  --navy-1: #071E33;
+  --navy-2: #0B3452;
+  --navy-3: #0F4A6A;
+  --hero-ink: #FFFFFF;
+  --hero-muted: #B7CAD8;
+  --hero-teal: #46C1C3;
+  --font-display: "Montserrat", "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+  --font-body: "Golos Text", "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+  --font-mono: "IBM Plex Mono", "Consolas", "Courier New", monospace;
+  color-scheme: light;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --paper: #081826; --surface: #0F2436; --ink: #E4EDF3; --muted: #93A9BA;
+    --rule: #1E3A50; --accent: #5BBFE0; --teal: #46C1C3; --accent-soft: #10324A; color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --paper: #081826; --surface: #0F2436; --ink: #E4EDF3; --muted: #93A9BA;
+  --rule: #1E3A50; --accent: #5BBFE0; --teal: #46C1C3; --accent-soft: #10324A; color-scheme: dark;
+}
+
+* { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; }
+body {
+  margin: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font: 400 17px/1.6 var(--font-body);
+}
+img { max-width: 100%; display: block; }
+a { color: var(--accent); text-underline-offset: 3px; }
+a:focus-visible, button:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 3px; }
+
+.wrap {
+  max-width: 1120px;
+  margin: 0 auto;
+  padding-left: max(20px, env(safe-area-inset-left, 0px));
+  padding-right: max(20px, env(safe-area-inset-right, 0px));
+}
+
+.label {
+  font: 500 12px/1.4 var(--font-mono);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+/* ---------- Первый экран ---------- */
+.hero {
+  position: relative;
+  overflow: hidden;
+  color: var(--hero-ink);
+  background:
+    radial-gradient(900px 500px at 15% 110%, rgba(70, 193, 195, 0.18), transparent 60%),
+    linear-gradient(115deg, var(--navy-1) 0%, var(--navy-2) 50%, var(--navy-3) 100%);
+}
+.hero-photo {
+  position: absolute;
+  top: 0; right: 0; bottom: 0;
+  width: 50%;
+  -webkit-mask-image: linear-gradient(to right, transparent 0%, #000 45%);
+  mask-image: linear-gradient(to right, transparent 0%, #000 45%);
+}
+.hero-photo img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 30%; }
+.hero-photo::after {
+  content: "";
+  position: absolute; inset: 0;
+  background: linear-gradient(to top, rgba(7, 30, 51, 0.85) 0%, rgba(7, 30, 51, 0) 40%);
+}
+.hero .wrap { position: relative; }
+.topbar {
+  display: flex; justify-content: space-between; align-items: center; gap: 16px;
+  padding-block: 22px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+}
+.topbar .name { font: 600 17px/1.2 var(--font-body); letter-spacing: 0.01em; color: var(--hero-ink); text-decoration: none; }
+.topbar .name span { color: var(--hero-muted); font-weight: 400; }
+.pill {
+  display: inline-flex; align-items: center; gap: 8px;
+  padding: 10px 20px;
+  border-radius: 999px;
+  border: 1px solid var(--hero-teal);
+  background: var(--hero-teal);
+  color: var(--navy-1);
+  font: 600 15px/1.2 var(--font-body);
+  text-decoration: none;
+  cursor: pointer;
+}
+.pill:hover { filter: brightness(1.08); }
+.pill.outline { background: transparent; color: var(--hero-ink); border-color: rgba(255, 255, 255, 0.55); }
+.pill.outline:hover { border-color: var(--hero-teal); filter: none; }
+.pill .hint { color: var(--hero-muted); font-weight: 400; font-size: 13px; }
+.hero a:focus-visible, .hero button:focus-visible { outline-color: var(--hero-teal); }
+
+.hero-text {
+  max-width: 600px;
+  padding-block: 72px 56px;
+  display: flex; flex-direction: column; gap: 20px;
+  min-width: 0;
+}
+.dash { width: 36px; height: 3px; background: var(--hero-teal); border-radius: 2px; }
+.status {
+  align-self: flex-start;
+  display: inline-flex; align-items: center; gap: 8px;
+  padding: 6px 12px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  color: var(--hero-ink);
+  font: 500 13px/1.3 var(--font-body);
+}
+.status::before { content: ""; width: 8px; height: 8px; border-radius: 50%; background: var(--hero-teal); flex: none; }
+.role { margin: 0; font: 500 13px/1.4 var(--font-mono); letter-spacing: 0.1em; text-transform: uppercase; color: var(--hero-teal); }
+h1 {
+  margin: 0;
+  font: 600 clamp(30px, 4.2vw, 48px)/1.15 var(--font-display);
+  letter-spacing: -0.015em;
+  text-wrap: balance;
+}
+.lead { margin: 0; max-width: 56ch; font-size: 18px; color: var(--hero-muted); }
+.contacts { display: flex; flex-wrap: wrap; gap: 12px; align-items: center; }
+.btn {
+  display: inline-flex; align-items: center; gap: 8px;
+  padding: 11px 18px;
+  border-radius: 6px;
+  border: 1px solid var(--accent);
+  background: var(--accent);
+  color: var(--paper);
+  font: 500 15px/1.2 var(--font-body);
+  text-decoration: none;
+  cursor: pointer;
+}
+.btn:hover { filter: brightness(1.08); }
+.btn.ghost { background: transparent; color: var(--ink); border-color: var(--rule); }
+.btn.ghost:hover { border-color: var(--accent); filter: none; }
+.btn .hint { color: var(--muted); font-size: 13px; }
+
+.figures {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  border-top: 1px solid rgba(255, 255, 255, 0.16);
+  padding-bottom: 36px;
+}
+.figure { padding: 22px 20px 0 0; display: flex; flex-direction: column; gap: 6px; }
+.figure + .figure { padding-left: 20px; border-left: 1px solid rgba(255, 255, 255, 0.12); }
+.figure b {
+  font: 600 clamp(24px, 2.8vw, 34px)/1.15 var(--font-display);
+  font-variant-numeric: lining-nums tabular-nums;
+  color: var(--hero-ink);
+}
+.figure span { color: var(--hero-muted); font-size: 15px; line-height: 1.45; }
+
+/* ---------- Разделы ---------- */
+section.block { padding-block: 56px; border-top: 1px solid var(--rule); }
+.block-grid {
+  display: grid;
+  grid-template-columns: 220px minmax(0, 1fr);
+  gap: 40px;
+}
+.block-head { display: flex; flex-direction: column; gap: 10px; }
+h2 {
+  margin: 0;
+  font: 600 26px/1.2 var(--font-display);
+  letter-spacing: -0.01em;
+  text-wrap: balance;
+}
+.block-head p { margin: 0; color: var(--muted); font-size: 15px; }
+.block-body { min-width: 0; display: flex; flex-direction: column; gap: 28px; }
+
+/* Сделки */
+.deals {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 12px;
+}
+.deal {
+  background: var(--surface);
+  border: 1px solid var(--rule);
+  border-radius: 4px;
+  padding: 22px 16px 18px;
+  text-align: center;
+  display: flex; flex-direction: column; align-items: center; gap: 10px;
+}
+.deal .amount {
+  font: 600 24px/1.15 var(--font-display);
+  font-variant-numeric: lining-nums;
+  white-space: nowrap;
+}
+.deal .who { font-weight: 600; font-size: 16px; }
+.deal .rule { width: 32px; height: 2px; background: var(--teal); }
+.note { margin: 0; color: var(--muted); font-size: 15px; }
+
+/* Компетенции */
+.skills { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 32px 40px; }
+.skill { display: flex; flex-direction: column; gap: 8px; }
+.skill h3 { margin: 0; font: 600 18px/1.35 var(--font-body); }
+.skill p { margin: 0; color: var(--muted); font-size: 16px; }
+
+/* ИИ-инструменты */
+.tool-main {
+  background: var(--surface);
+  border: 1px solid var(--rule);
+  border-radius: 6px;
+  overflow: hidden;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1.25fr);
+}
+.tool-main .text { padding: 26px 26px 24px; display: flex; flex-direction: column; gap: 12px; }
+.tool-main .shot { border: 0; border-left: 1px solid var(--rule); }
+.tool-main .shot { display: flex; align-items: center; padding: 12px; background: #F8F6F5; }
+.tool-main .shot img { width: 100%; height: auto; }
+.tools { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 14px; }
+.tool {
+  background: var(--surface);
+  border: 1px solid var(--rule);
+  border-radius: 6px;
+  padding: 22px 20px;
+  display: flex; flex-direction: column; gap: 10px;
+}
+.tool h3, .tool-main h3 { margin: 0; font: 600 18px/1.35 var(--font-body); }
+.tool p, .tool-main p { margin: 0; color: var(--muted); font-size: 15.5px; }
+.tool .label, .tool-main .label { color: var(--accent); }
+.ai-note {
+  margin: 0;
+  padding: 14px 18px;
+  border-left: 2px solid var(--teal);
+  background: var(--accent-soft);
+  font-size: 16px;
+}
+
+/* Работы */
+.works { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 22px 18px; }
+.work { display: flex; flex-direction: column; gap: 10px; min-width: 0; }
+.shot {
+  display: block; width: 100%;
+  padding: 0;
+  border: 1px solid var(--rule);
+  border-radius: 4px;
+  overflow: hidden;
+  background: var(--surface);
+  cursor: zoom-in;
+}
+.work .shot img { width: 100%; aspect-ratio: 16 / 10; object-fit: cover; object-position: left top; transition: transform .3s ease; }
+.shot:hover img { transform: scale(1.03); }
+.work .cap { font-size: 15px; line-height: 1.45; }
+.work .cap span { display: block; color: var(--muted); font-size: 14px; }
+
+/* Карьера */
+.timeline { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; }
+.timeline li {
+  display: grid;
+  grid-template-columns: 110px minmax(0, 1fr);
+  gap: 20px;
+  padding-block: 16px;
+  border-bottom: 1px solid var(--rule);
+}
+.timeline li:first-child { padding-top: 0; }
+.timeline .years { font: 500 14px/1.6 var(--font-mono); color: var(--muted); font-variant-numeric: tabular-nums; }
+.timeline .org { font-weight: 600; }
+.timeline .pos { display: block; }
+.timeline .what { display: block; color: var(--muted); font-size: 15px; }
+
+/* Образование, инструменты */
+.facts { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 28px 40px; }
+.facts h3 { margin: 0 0 8px; font: 600 16px/1.4 var(--font-body); }
+.facts ul { margin: 0; padding: 0; list-style: none; display: flex; flex-direction: column; gap: 8px; }
+.facts li span { display: block; color: var(--muted); font-size: 14.5px; }
+.chips { display: flex; flex-wrap: wrap; gap: 8px; }
+.chip {
+  padding: 5px 11px;
+  border: 1px solid var(--rule);
+  border-radius: 999px;
+  font-size: 14px;
+  background: var(--surface);
+}
+
+/* О себе */
+.about p { margin: 0; max-width: 62ch; }
+
+/* Контакты */
+.contact-card { display: flex; flex-direction: column; gap: 18px; }
+.contact-card .big { margin: 0; font: 500 24px/1.35 var(--font-display); text-wrap: balance; }
+.copy-state { font-size: 14px; color: var(--accent); min-height: 1.4em; }
+
+footer {
+  padding-block: 28px 40px;
+  border-top: 1px solid var(--rule);
+  color: var(--muted);
+  font-size: 14px;
+}
+footer .wrap { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 10px 24px; }
+
+/* Просмотр скриншотов */
+dialog.viewer {
+  width: min(1400px, 96vw);
+  max-height: 94vh;
+  padding: 0;
+  border: 1px solid var(--rule);
+  border-radius: 6px;
+  background: var(--surface);
+  color: var(--ink);
+}
+dialog.viewer::backdrop { background: rgba(8, 14, 11, 0.72); }
+.viewer-bar { display: flex; justify-content: space-between; align-items: center; gap: 16px; padding: 12px 16px; border-bottom: 1px solid var(--rule); }
+.viewer-bar p { margin: 0; font-size: 15px; min-width: 0; }
+.viewer-close {
+  flex: none;
+  padding: 6px 12px;
+  border: 1px solid var(--rule);
+  border-radius: 6px;
+  background: transparent;
+  color: var(--ink);
+  font: 500 14px/1.2 var(--font-body);
+  cursor: pointer;
+}
+.viewer-img { overflow: auto; max-height: calc(94vh - 60px); }
+.viewer-img img { width: 100%; height: auto; }
+
+/* ---------- Адаптив ---------- */
+@media (max-width: 1100px) {
+  /* сделки в виде списка: пять карточек в ряд уже не помещаются */
+  .deals { grid-template-columns: minmax(0, 1fr); gap: 0; border-top: 1px solid var(--rule); }
+  .deal {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    grid-template-areas: "who amount" "label amount";
+    align-items: center;
+    gap: 2px 16px;
+    text-align: left;
+    padding: 14px 4px;
+    background: transparent;
+    border: 0;
+    border-bottom: 1px solid var(--rule);
+    border-radius: 0;
+  }
+  .deal .rule { display: none; }
+  .deal .label { grid-area: label; }
+  .deal .who { grid-area: who; }
+  .deal .amount { grid-area: amount; font-size: 24px; text-align: right; }
+}
+@media (max-width: 900px) {
+  .block-grid { grid-template-columns: minmax(0, 1fr); gap: 24px; }
+  .tools { grid-template-columns: minmax(0, 1fr); }
+  .tool-main { grid-template-columns: minmax(0, 1fr); }
+  .tool-main .shot { border-left: 0; border-top: 1px solid var(--rule); }
+  .works { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@media (max-width: 760px) {
+  /* фото сверху на всю ширину и растворяется в синем фоне */
+  .hero-photo {
+    position: relative;
+    width: 100%; height: 360px;
+    -webkit-mask-image: linear-gradient(to bottom, #000 55%, transparent 100%);
+    mask-image: linear-gradient(to bottom, #000 55%, transparent 100%);
+  }
+  .hero-photo::after { background: linear-gradient(to bottom, rgba(7, 30, 51, 0.7) 0%, rgba(7, 30, 51, 0) 28%); }
+  .hero .topbar { position: absolute; top: 0; left: 0; right: 0; padding-left: max(20px, env(safe-area-inset-left, 0px)); padding-right: max(20px, env(safe-area-inset-right, 0px)); border-bottom: 0; }
+  .hero .wrap { position: static; }
+  .hero-text { padding-block: 0 36px; margin-top: -40px; position: relative; }
+  .figures { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .figure:nth-child(3) { padding-left: 0; border-left: 0; }
+  .figure { padding-bottom: 18px; }
+  .figure:nth-child(n+3) { border-top: 1px solid rgba(255, 255, 255, 0.12); }
+  section.block { padding-block: 40px; }
+  .skills, .facts { grid-template-columns: minmax(0, 1fr); gap: 24px; }
+}
+@media (max-width: 560px) {
+  body { font-size: 16px; }
+  .lead { font-size: 17px; }
+  .deal .amount { font-size: 20px; }
+  .figure b { font-size: 21px; white-space: nowrap; }
+  .figure { padding-right: 12px; }
+  .figure + .figure { padding-left: 14px; }
+  .figure:nth-child(3) { padding-left: 0; }
+  .works { grid-template-columns: minmax(0, 1fr); }
+  .timeline li { grid-template-columns: minmax(0, 1fr); gap: 2px; }
+  .contacts .btn, .hero-text .pill { flex: 1 1 100%; justify-content: center; }
+  .topbar .name span { display: none; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .work .shot img { transition: none; }
+  .shot:hover img { transform: none; }
+}
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="hero-photo"><img src="img/photo-hero.jpg" alt="Очир Насунов на фоне заката в калмыцкой степи" width="1000" height="1068"></div>
+  <div class="wrap">
+    <div class="topbar">
+      <a class="name" href="#top">Очир Насунов <span>· финансы и инвестиции</span></a>
+      <a class="pill" href="#contact">Связаться</a>
+    </div>
+
+    <div class="hero-text" id="top">
+      <div class="dash"></div>
+      <span class="status">Открыт к предложениям · Москва</span>
+      <p class="role">Корпоративные финансы · инвестиции · привлечение капитала</p>
+      <h1>Привлекаю финансирование и строю финансовые службы</h1>
+      <p class="lead">20 лет в банке, инвестиционных фондах, институтах развития и на стороне компаний: АПК, производство, девелопмент, гостиничный бизнес. Автоматизирую учёт и анализ с помощью ИИ.</p>
+      <div class="contacts">
+        <a class="pill" href="https://t.me/ochirnn" target="_blank" rel="noopener">Написать в Telegram</a>
+        <button class="pill outline" type="button" id="copy-email" data-email="on@r140.ru">on@r140.ru <span class="hint">· скопировать</span></button>
+      </div>
+    </div>
+
+    <div class="figures">
+      <div class="figure"><b>70+ млрд ₽</b><span>привлечено в проекты в роли консультанта</span></div>
+      <div class="figure"><b>3 млрд ₽</b><span>привлечено в роли финансового директора</span></div>
+      <div class="figure"><b>20+ лет</b><span>в инвестициях и корпоративных финансах</span></div>
+      <div class="figure"><b>ДипИФР</b><span>диплом ACCA по международной финансовой отчётности</span></div>
+    </div>
+  </div>
+</header>
+
+<main>
+  <section class="block" id="deals">
+    <div class="wrap block-grid">
+      <div class="block-head">
+        <span class="label">Сделки</span>
+        <h2>Примеры проектов</h2>
+      </div>
+      <div class="block-body">
+        <div class="deals">
+          <div class="deal"><span class="label">Привлечено</span><span class="amount">1,5 млрд ₽</span><span class="rule"></span><span class="who">ИРРИКО</span></div>
+          <div class="deal"><span class="label">Привлечено</span><span class="amount">30 млн $</span><span class="rule"></span><span class="who">Skylink</span></div>
+          <div class="deal"><span class="label">Привлечено</span><span class="amount">1,3 млрд ₽</span><span class="rule"></span><span class="who">Вактек</span></div>
+          <div class="deal"><span class="label">Реструктуризация</span><span class="amount">3 млрд ₽</span><span class="rule"></span><span class="who">АкТех</span></div>
+          <div class="deal"><span class="label">Реструктуризация</span><span class="amount">10 млрд ₽</span><span class="rule"></span><span class="who">Sensorium Hall</span></div>
+        </div>
+        <p class="note">Финансовые модели, инвестиционные презентации и бизнес-планы для банков, фондов и институтов развития, переговоры с кредиторами.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="block" id="value">
+    <div class="wrap block-grid">
+      <div class="block-head">
+        <span class="label">Компетенции</span>
+        <h2>Что я делаю для компании</h2>
+      </div>
+      <div class="block-body">
+        <div class="skills">
+          <div class="skill">
+            <h3>Финансовая служба с нуля</h3>
+            <p>Управленческий учёт, бюджетирование и казначейство: от структуры статей и регламентов до отчётов, по которым собственник принимает решения.</p>
+          </div>
+          <div class="skill">
+            <h3>Привлечение финансирования</h3>
+            <p>Банковские кредиты, проектное финансирование, институты развития и инвесторы. Готовлю финмодель, презентацию и бизнес-план и веду проект до получения денег.</p>
+          </div>
+          <div class="skill">
+            <h3>Реструктуризация долга</h3>
+            <p>Анализ долговой нагрузки, новый график платежей и переговоры с банками. Опыт сделок на 3 и 10 млрд ₽.</p>
+          </div>
+          <div class="skill">
+            <h3>Инвестиционные проекты</h3>
+            <p>Структурирование и оценка проектов: NPV, IRR, окупаемость, покрытие долга, чувствительность.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="block" id="ai">
+    <div class="wrap block-grid">
+      <div class="block-head">
+        <span class="label">Автоматизация</span>
+        <h2>Инструменты, которые я собрал с ИИ</h2>
+        <p>Я не программист. Эти инструменты я сделал сам с помощью нейросетей и работаю с ними.</p>
+      </div>
+      <div class="block-body">
+        <article class="tool-main">
+          <div class="text">
+            <span class="label">Учёт и отчётность</span>
+            <h3>Система для управленческого учёта</h3>
+            <p>Google Таблицы со скриптом. Загружает из 1С карточки счетов 51 и 50, сверяет обороты с итогом, отсекает дубли и разносит операции по статьям по настраиваемым правилам. На выходе отчёт о движении денег и отчёт о прибылях и убытках по начислению.</p>
+            <p>Для собственника ИИ собирает отчёт план-факт в презентацию с разбором отклонений по объектам.</p>
+          </div>
+          <button class="shot" type="button" data-full="img/plan-fakt.png" data-caption="Слайд отчёта план-факт для группы отелей и ресторанов. Названия объектов изменены.">
+            <img src="img/plan-fakt.png" alt="Каскадная диаграмма: прибыль на 37,6 млн руб. меньше плана, разбор отклонений по объектам" loading="lazy">
+          </button>
+        </article>
+
+        <div class="tools">
+          <article class="tool">
+            <span class="label">Инвестпроекты</span>
+            <h3>Финмодель инвестпроекта</h3>
+            <p>Навык для нейросети: строит квартальную финансовую модель в Excel по образцу модели реального проекта. Налоги, кредиты, три формы отчётности, FCFF, WACC, NPV и IRR, DSCR и чувствительность. Сначала задаёт вопросы по проекту, недостающие рыночные параметры ищет в открытых источниках со ссылками.</p>
+          </article>
+          <article class="tool">
+            <span class="label">Анализ контрагентов</span>
+            <h3>Досье на компанию</h3>
+            <p>Telegram-бот: по названию или ИНН забирает бухгалтерскую отчётность из ГИР БО ФНС и готовит записку о финансовом положении компании. Пригождается перед переговорами и встречами.</p>
+          </article>
+          <article class="tool">
+            <span class="label">Мониторинг</span>
+            <h3>Фильтр вакансий hh.ru</h3>
+            <p>Два Telegram-бота: каждое утро присылают свежие вакансии, отобранные и оценённые по моему профилю. Работают по расписанию без моего участия.</p>
+          </article>
+        </div>
+
+        <p class="ai-note">Этот сайт я тоже собрал с ИИ, код открыт на <a href="https://github.com/Richo1010" target="_blank" rel="noopener">GitHub</a>.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="block" id="works">
+    <div class="wrap block-grid">
+      <div class="block-head">
+        <span class="label">Портфолио</span>
+        <h2>Примеры работ</h2>
+        <p>Фрагменты финмоделей, презентаций и отчётов разных лет. Данные клиентов обезличены. Нажмите, чтобы увеличить.</p>
+      </div>
+      <div class="block-body">
+        <div class="works">
+          <figure class="work" style="margin:0">
+            <button class="shot" type="button" data-full="img/odds-fcf.png" data-caption="Финансовая модель: отчёт о движении денег, свободный денежный поток, NPV, IRR и срок окупаемости.">
+              <img src="img/odds-fcf.png" alt="Фрагмент финмодели: ОДДС и оценка эффективности проекта" loading="lazy">
+            </button>
+            <figcaption class="cap">Финансовая модель<span>ОДДС, свободный денежный поток, NPV и IRR</span></figcaption>
+          </figure>
+          <figure class="work" style="margin:0">
+            <button class="shot" type="button" data-full="img/capex.png" data-caption="Инвестиционная презентация: капитальные затраты, структура и график инвестиций.">
+              <img src="img/capex.png" alt="Слайд: капитальные затраты по проекту" loading="lazy">
+            </button>
+            <figcaption class="cap">Инвестиционная презентация<span>Капзатраты и график инвестиций</span></figcaption>
+          </figure>
+          <figure class="work" style="margin:0">
+            <button class="shot" type="button" data-full="img/rynok.png" data-caption="Инвестиционная презентация: анализ рынка твердосплавного инструмента и стратегия маркетинга.">
+              <img src="img/rynok.png" alt="Слайд: анализ рынка" loading="lazy">
+            </button>
+            <figcaption class="cap">Анализ рынка<span>Ёмкость, импорт, прогноз роста</span></figcaption>
+          </figure>
+          <figure class="work" style="margin:0">
+            <button class="shot" type="button" data-full="img/port.png" data-caption="Инвестиционная презентация: параметры проекта морского порта, грузооборот по этапам.">
+              <img src="img/port.png" alt="Слайд: параметры проекта морского порта" loading="lazy">
+            </button>
+            <figcaption class="cap">Проект морского порта<span>Грузооборот по этапам, инфраструктура</span></figcaption>
+          </figure>
+          <figure class="work" style="margin:0">
+            <button class="shot" type="button" data-full="img/sebestoimost.webp" data-caption="Управленческий учёт: себестоимость и маржинальность по каждому виду продукции мясоперерабатывающего производства.">
+              <img src="img/sebestoimost.webp" alt="Таблица себестоимости и маржинальности по видам продукции" loading="lazy">
+            </button>
+            <figcaption class="cap">Управленческий учёт<span>Себестоимость и маржа по каждому продукту</span></figcaption>
+          </figure>
+          <figure class="work" style="margin:0">
+            <button class="shot" type="button" data-full="img/sredstva.png" data-caption="Анализ использования инвестиционных средств группы компаний.">
+              <img src="img/sredstva.png" alt="Слайд: использование средств" loading="lazy">
+            </button>
+            <figcaption class="cap">Анализ использования средств<span>Куда ушли инвестиции группы</span></figcaption>
+          </figure>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="block" id="career">
+    <div class="wrap block-grid">
+      <div class="block-head">
+        <span class="label">Опыт</span>
+        <h2>Карьера</h2>
+      </div>
+      <div class="block-body">
+        <ol class="timeline">
+          <li><span class="years">2024–2026</span><div><span class="org">ГК МФ-Холдинг</span><span class="pos">Финансовый директор</span><span class="what">Отели, рестораны, строительство · Элиста</span></div></li>
+          <li><span class="years">2024–2026</span><div><span class="org">Waarde Capital</span><span class="pos">Инвестиционный менеджер, по совместительству</span><span class="what">Инвестиционный фонд · Москва</span></div></li>
+          <li><span class="years">2019–2024</span><div><span class="org">ОН Финанс</span><span class="pos">Собственная консалтинговая практика</span><span class="what">Привлечение финансирования и постановка управленческого учёта для клиентов · Элиста</span></div></li>
+          <li><span class="years">2018–2019</span><div><span class="org">Агентство Дальнего Востока по привлечению инвестиций и поддержке экспорта</span><span class="pos">Управляющий директор инвестиционного блока</span><span class="what">Институт развития ДФО · Москва</span></div></li>
+          <li><span class="years">2015–2018</span><div><span class="org">ГК ИРРИКО</span><span class="pos">Финансовый директор</span><span class="what">Сельхозхолдинг, 21 тыс. га орошаемого земледелия · Ставрополь</span></div></li>
+          <li><span class="years">2013–2015</span><div><span class="org">АО «Кавминкурортресурсы»</span><span class="pos">Финансовый директор, по совместительству</span><span class="what">Добыча минеральной воды · Ессентуки</span></div></li>
+          <li><span class="years">2011–2015</span><div><span class="org">АО «Корпорация развития Северного Кавказа»</span><span class="pos">Менеджер управления инвестиционного анализа</span><span class="what">Инвестиционный фонд развития СКФО</span></div></li>
+          <li><span class="years">2009–2011</span><div><span class="org">ПАО «Транскапиталбанк»</span><span class="pos">Начальник отдела анализа проектов, заместитель начальника управления проектного финансирования</span><span class="what">Коммерческий банк · Москва</span></div></li>
+          <li><span class="years">2004–2009</span><div><span class="org">Финематика</span><span class="pos">Руководитель направления финансового моделирования</span><span class="what">Финансовый консалтинг · Москва</span></div></li>
+          <li><span class="years">2002–2004</span><div><span class="org">Verysell Group</span><span class="pos">Менеджер по расчётам с поставщиками</span><span class="what">Системный интегратор · Москва</span></div></li>
+        </ol>
+      </div>
+    </div>
+  </section>
+
+  <section class="block" id="education">
+    <div class="wrap block-grid">
+      <div class="block-head">
+        <span class="label">Квалификация</span>
+        <h2>Образование и навыки</h2>
+      </div>
+      <div class="block-body">
+        <div class="facts">
+          <div>
+            <h3>Образование</h3>
+            <ul>
+              <li>Финансовая академия при Правительстве РФ<span>«Финансы и кредит», 1998–2003</span></li>
+              <li>Диплом ACCA по МСФО (ДипИФР)<span>2017</span></li>
+              <li>Физико-математическая гимназия<span>Золотая медаль, 1998</span></li>
+            </ul>
+          </div>
+          <div>
+            <h3>Инструменты</h3>
+            <div class="chips">
+              <span class="chip">Excel и VBA</span><span class="chip">Power BI</span><span class="chip">PowerPoint</span>
+              <span class="chip">1С</span><span class="chip">БИТ.Финанс</span><span class="chip">Google Таблицы</span>
+              <span class="chip">Нейросети</span><span class="chip">ИИ-агенты</span><span class="chip">Консультант+, Гарант</span>
+            </div>
+            <h3 style="margin-top:20px">Языки</h3>
+            <ul>
+              <li>Русский<span>родной</span></li>
+              <li>Английский<span>Intermediate</span></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="block" id="about">
+    <div class="wrap block-grid">
+      <div class="block-head">
+        <span class="label">О себе</span>
+        <h2>Вне работы</h2>
+      </div>
+      <div class="block-body about">
+        <p>Играю в «Что? Где? Когда?» и квизы, также несколько лет был ведущим игр. С помощью нейросетей сделал Telegram-бота: показывает ближайшие игры, присылает информацию о турнирах, редакторах вопросов и т. д.</p>
+        <p>Ещё люблю футбол, книги, кино.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="block" id="contact">
+    <div class="wrap block-grid">
+      <div class="block-head">
+        <span class="label">Контакты</span>
+        <h2>Связаться</h2>
+      </div>
+      <div class="block-body contact-card">
+        <p class="big">Рассматриваю позиции в корпоративных финансах и инвестициях в Москве. Буду рад разговору.</p>
+        <div class="contacts">
+          <a class="btn" href="https://t.me/ochirnn" target="_blank" rel="noopener">Telegram @ochirnn</a>
+          <button class="btn ghost" type="button" id="copy-email-2" data-email="on@r140.ru">on@r140.ru <span class="hint">· скопировать</span></button>
+        </div>
+        <div class="copy-state" id="copy-state" aria-live="polite"></div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>© 2026 Очир Насунов</span>
+    <span>Сайт собран с помощью ИИ · <a href="https://github.com/Richo1010" target="_blank" rel="noopener">GitHub</a></span>
+  </div>
+</footer>
+
+<dialog class="viewer" id="viewer" aria-label="Просмотр примера работы">
+  <div class="viewer-bar">
+    <p id="viewer-caption"></p>
+    <button class="viewer-close" type="button" id="viewer-close">Закрыть</button>
+  </div>
+  <div class="viewer-img"><img id="viewer-img" src="" alt=""></div>
+</dialog>
+
+<script>
+(function () {
+  var viewer = document.getElementById('viewer');
+  var vImg = document.getElementById('viewer-img');
+  var vCap = document.getElementById('viewer-caption');
+  document.querySelectorAll('button.shot').forEach(function (b) {
+    b.addEventListener('click', function () {
+      vImg.src = b.dataset.full;
+      vImg.alt = b.dataset.caption || '';
+      vCap.textContent = b.dataset.caption || '';
+      if (viewer.showModal) viewer.showModal(); else window.open(b.dataset.full, '_blank');
+    });
+  });
+  document.getElementById('viewer-close').addEventListener('click', function () { viewer.close(); });
+  viewer.addEventListener('click', function (e) { if (e.target === viewer) viewer.close(); });
+
+  var state = document.getElementById('copy-state');
+  function copied(btn, ok) {
+    var hint = btn.querySelector('.hint');
+    hint.textContent = ok ? '· скопировано' : '· выделите и скопируйте';
+    if (btn.id === 'copy-email-2') state.textContent = ok ? 'Адрес скопирован' : '';
+    setTimeout(function () { hint.textContent = '· скопировать'; state.textContent = ''; }, 2500);
+  }
+  document.querySelectorAll('[data-email]').forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      var email = btn.dataset.email;
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(email).then(function () { copied(btn, true); }, function () { copied(btn, false); });
+      } else {
+        copied(btn, false);
+      }
+    });
+  });
+})();
+</script>
+</body>
+</html>
