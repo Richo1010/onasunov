@@ -3,11 +3,12 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Очир Насунов · финансы и инвестиции</title>
-<meta name="description" content="Корпоративные финансы и инвестиции. 20+ лет в инвестициях и корпоративных финансах, более 70 млрд ₽ привлечённого финансирования. Автоматизирую финансовую службу с помощью ИИ.">
-<meta property="og:title" content="Очир Насунов · финансы и инвестиции">
-<meta property="og:description" content="20+ лет в инвестициях и корпоративных финансах. Более 70 млрд ₽ привлечённого финансирования. Автоматизация финслужбы с ИИ.">
-<meta property="og:image" content="img/photo.jpg">
+<title>Очир Насунов · финансовый директор</title>
+<meta name="description" content="Финансовый директор (CFO), руководитель проектного финансирования. Более 20 лет в инвестициях и корпоративных финансах: управленческий учёт с нуля в 10+ компаниях, 21 млрд ₽ нового финансирования, 13 млрд ₽ реструктурированного долга. Москва.">
+<meta property="og:title" content="Очир Насунов · финансовый директор">
+<meta property="og:description" content="Финансовый директор (CFO), руководитель проектного финансирования. Более 20 лет в инвестициях и корпоративных финансах: управленческий учёт с нуля в 10+ компаниях, 21 млрд ₽ нового финансирования, 13 млрд ₽ реструктурированного долга. Москва.">
+<meta property="og:image" content="https://richo1010.github.io/onasunov/img/og-photo.jpg">
+<meta property="og:url" content="https://richo1010.github.io/onasunov/">
 <meta property="og:type" content="profile">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -90,7 +91,7 @@ a:focus-visible, button:focus-visible { outline: 2px solid var(--accent); outlin
   padding-block: 56px 48px;
 }
 
-/* Фото в окружении «рабочих» карточек: денежный поток, показатели модели, структура финансирования (иллюстрация, не данные клиентов) */
+/* Фото: края плавно растворяются в синем фоне */
 .visual {
   position: relative;
   width: 100%;
@@ -98,54 +99,24 @@ a:focus-visible, button:focus-visible { outline: 2px solid var(--accent); outlin
   aspect-ratio: 1 / 1.32;
   justify-self: end;
 }
-/* фото на бирюзовом фоне; сверху добавлен тот же бирюзовый, чтобы голова не упиралась в край,
-   а края всего блока плавно растворяются в синем */
+/* вокруг фото добавлен такой же серый фон (сверху и по бокам), чтобы переход в синий
+   начинался подальше от фигуры; края всего блока плавно растворяются */
 .photo-wrap {
   position: absolute;
-  left: 4%; bottom: 0;
-  width: 92%;
-  padding-top: 10%;
-  background: #38A6AF;
-  -webkit-mask-image: radial-gradient(ellipse 50% 50% at 50% 50%, #000 28%, rgba(0, 0, 0, 0.88) 42%, rgba(0, 0, 0, 0.62) 58%, rgba(0, 0, 0, 0.32) 76%, rgba(0, 0, 0, 0.1) 90%, transparent 100%);
-  mask-image: radial-gradient(ellipse 50% 50% at 50% 50%, #000 28%, rgba(0, 0, 0, 0.88) 42%, rgba(0, 0, 0, 0.62) 58%, rgba(0, 0, 0, 0.32) 76%, rgba(0, 0, 0, 0.1) 90%, transparent 100%);
+  left: -8%; bottom: 0;
+  width: 116%;
+  padding: 10% 12% 0;
+  background: linear-gradient(to right, #B6B5BA, #B0AFB4 50%, #ABABAD);
+  -webkit-mask-image: radial-gradient(ellipse 50% 50% at 50% 50%, #000 42%, rgba(0, 0, 0, 0.85) 56%, rgba(0, 0, 0, 0.55) 70%, rgba(0, 0, 0, 0.25) 85%, transparent 100%);
+  mask-image: radial-gradient(ellipse 50% 50% at 50% 50%, #000 42%, rgba(0, 0, 0, 0.85) 56%, rgba(0, 0, 0, 0.55) 70%, rgba(0, 0, 0, 0.25) 85%, transparent 100%);
 }
 .photo-wrap img { display: block; width: 100%; height: auto; }
-/* к краям бирюзовый постепенно темнеет до синего фона страницы */
+/* к краям серый фон постепенно темнеет до синего фона страницы */
 .photo-wrap::after {
   content: "";
   position: absolute; inset: 0;
-  background: radial-gradient(ellipse 50% 50% at 50% 50%, transparent 35%, rgba(11, 52, 82, 0.35) 65%, rgba(11, 52, 82, 0.75) 100%);
+  background: radial-gradient(ellipse 50% 50% at 50% 50%, transparent 48%, rgba(11, 52, 82, 0.3) 72%, rgba(11, 52, 82, 0.7) 100%);
 }
-.vcard {
-  position: absolute;
-  z-index: 1;
-  padding: 12px 14px;
-  border-radius: 10px;
-  background: rgba(10, 40, 64, 0.72);
-  border: 1px solid rgba(255, 255, 255, 0.16);
-  -webkit-backdrop-filter: blur(8px);
-  backdrop-filter: blur(8px);
-  box-shadow: 0 14px 34px rgba(0, 0, 0, 0.28);
-  color: var(--hero-ink);
-  font: 400 12px/1.35 var(--font-body);
-}
-.vcard .vt { display: block; margin-bottom: 8px; font: 500 10.5px/1.3 var(--font-mono); letter-spacing: 0.08em; text-transform: uppercase; color: var(--hero-muted); }
-.vcard svg { display: block; width: 100%; height: auto; }
-.vcard.cash { right: -4%; top: 50%; width: 38%; }
-.vcard.kpi { left: 0; bottom: 4%; width: 44%; }
-.vcard.mix { right: -2%; bottom: 4%; width: 52%; }
-.kpi-table { width: 100%; border-collapse: collapse; font-variant-numeric: tabular-nums; }
-.kpi-table td { padding: 3px 0; border-top: 1px solid rgba(255, 255, 255, 0.1); }
-.kpi-table tr:first-child td { border-top: 0; }
-.kpi-table td:last-child { text-align: right; font-weight: 600; color: var(--hero-teal); white-space: nowrap; padding-left: 8px; }
-.mix-row { display: flex; align-items: center; gap: 10px; }
-.mix-row svg { width: 46px; flex: none; }
-.mix-legend { display: flex; flex-direction: column; gap: 5px; }
-.mix-legend span::before { content: ""; display: inline-block; width: 8px; height: 8px; border-radius: 2px; margin-right: 5px; background: var(--hero-teal); }
-.mix-legend span.own::before { background: rgba(255, 255, 255, 0.45); }
-/* проценты на отдельной строке, чтобы обе подписи выглядели одинаково */
-.mix-legend b { display: block; padding-left: 13px; font-weight: 600; color: var(--hero-teal); white-space: nowrap; }
-.mix-legend span.own b { color: var(--hero-ink); }
 .topbar {
   display: flex; justify-content: space-between; align-items: center; gap: 16px;
   padding-block: 22px;
@@ -187,7 +158,8 @@ a:focus-visible, button:focus-visible { outline: 2px solid var(--accent); outlin
   font: 500 13px/1.3 var(--font-body);
 }
 .status::before { content: ""; width: 8px; height: 8px; border-radius: 50%; background: var(--hero-teal); flex: none; }
-.role { margin: 0; font: 500 13px/1.4 var(--font-mono); letter-spacing: 0.1em; text-transform: uppercase; color: var(--hero-teal); }
+/* целевые роли: рекрутер должен увидеть их сразу */
+.role { margin: 0; font: 600 clamp(16px, 1.6vw, 19px)/1.4 var(--font-display); color: var(--hero-teal); text-wrap: balance; }
 h1 {
   margin: 0;
   font: 600 clamp(30px, 4.2vw, 48px)/1.15 var(--font-display);
@@ -244,27 +216,33 @@ h2 {
 .block-head p { margin: 0; color: var(--muted); font-size: 15px; }
 .block-body { min-width: 0; display: flex; flex-direction: column; gap: 28px; }
 
-/* Сделки */
-.deals {
-  display: grid;
-  grid-template-columns: repeat(5, minmax(0, 1fr));
-  gap: 12px;
+/* Проекты: список, сгруппированный по типу финансирования */
+.deal-group { display: flex; flex-direction: column; }
+.deal-group h3 {
+  margin: 0;
+  display: flex; justify-content: space-between; align-items: baseline; gap: 16px;
+  padding-bottom: 10px;
+  border-bottom: 2px solid var(--teal);
+  font: 600 18px/1.3 var(--font-display);
 }
+.deal-group h3 .total { font-variant-numeric: lining-nums tabular-nums; white-space: nowrap; }
 .deal {
-  background: var(--surface);
-  border: 1px solid var(--rule);
-  border-radius: 4px;
-  padding: 22px 16px 18px;
-  text-align: center;
-  display: flex; flex-direction: column; align-items: center; gap: 10px;
-}
-.deal .amount {
-  font: 600 24px/1.15 var(--font-display);
-  font-variant-numeric: lining-nums;
-  white-space: nowrap;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 2px 16px;
+  padding: 12px 0;
+  border-bottom: 1px solid var(--rule);
 }
 .deal .who { font-weight: 600; font-size: 16px; }
-.deal .rule { width: 32px; height: 2px; background: var(--teal); }
+.deal .meta { grid-column: 1; color: var(--muted); font-size: 14px; }
+.deal .amount {
+  grid-column: 2; grid-row: 1 / span 2;
+  font: 600 20px/1.15 var(--font-display);
+  font-variant-numeric: lining-nums tabular-nums;
+  white-space: nowrap;
+  text-align: right;
+}
 .note { margin: 0; color: var(--muted); font-size: 15px; }
 
 /* Компетенции */
@@ -273,16 +251,8 @@ h2 {
 .skill h3 { margin: 0; font: 600 18px/1.35 var(--font-body); }
 .skill p { margin: 0; color: var(--muted); font-size: 16px; }
 
-/* ИИ-инструменты */
-.tool-main {
-  background: var(--surface);
-  border: 1px solid var(--rule);
-  border-radius: 6px;
-  overflow: hidden;
-}
-.tool-main .text { padding: 26px 26px 24px; display: flex; flex-direction: column; gap: 12px; }
-.tool-main p { max-width: 68ch; }
-.tools { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 14px; }
+/* Автоматизация */
+.tools { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; }
 .tool {
   background: var(--surface);
   border: 1px solid var(--rule);
@@ -290,9 +260,9 @@ h2 {
   padding: 22px 20px;
   display: flex; flex-direction: column; gap: 10px;
 }
-.tool h3, .tool-main h3 { margin: 0; font: 600 18px/1.35 var(--font-body); }
-.tool p, .tool-main p { margin: 0; color: var(--muted); font-size: 15.5px; }
-.tool .label, .tool-main .label { color: var(--accent); }
+.tool h3 { margin: 0; font: 600 18px/1.35 var(--font-body); }
+.tool p { margin: 0; color: var(--muted); font-size: 15.5px; }
+.tool .label { color: var(--accent); }
 
 /* Работы */
 .works { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 22px 18px; }
@@ -313,18 +283,21 @@ h2 {
 
 /* Карьера */
 .timeline { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; }
-.timeline li {
+.timeline > li {
   display: grid;
-  grid-template-columns: 110px minmax(0, 1fr);
+  grid-template-columns: 150px minmax(0, 1fr);
   gap: 20px;
   padding-block: 16px;
   border-bottom: 1px solid var(--rule);
 }
-.timeline li:first-child { padding-top: 0; }
+.timeline > li:first-child { padding-top: 0; }
 .timeline .years { font: 500 14px/1.6 var(--font-mono); color: var(--muted); font-variant-numeric: tabular-nums; }
 .timeline .org { font-weight: 600; }
 .timeline .pos { display: block; }
 .timeline .what { display: block; color: var(--muted); font-size: 15px; }
+.timeline .duties { margin: 8px 0 0; padding-left: 18px; list-style: disc; font-size: 15px; }
+.timeline .duties li + li { margin-top: 4px; }
+.timeline .duties li::marker { color: var(--teal); }
 
 /* Образование, инструменты */
 .facts { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 28px 40px; }
@@ -384,25 +357,6 @@ dialog.viewer::backdrop { background: rgba(8, 14, 11, 0.72); }
 
 /* ---------- Адаптив ---------- */
 @media (max-width: 1100px) {
-  /* сделки в виде списка: пять карточек в ряд уже не помещаются */
-  .deals { grid-template-columns: minmax(0, 1fr); gap: 0; border-top: 1px solid var(--rule); }
-  .deal {
-    display: grid;
-    grid-template-columns: minmax(0, 1fr) auto;
-    grid-template-areas: "who amount" "label amount";
-    align-items: center;
-    gap: 2px 16px;
-    text-align: left;
-    padding: 14px 4px;
-    background: transparent;
-    border: 0;
-    border-bottom: 1px solid var(--rule);
-    border-radius: 0;
-  }
-  .deal .rule { display: none; }
-  .deal .label { grid-area: label; }
-  .deal .who { grid-area: who; }
-  .deal .amount { grid-area: amount; font-size: 24px; text-align: right; }
 }
 @media (max-width: 900px) {
   .block-grid { grid-template-columns: minmax(0, 1fr); gap: 24px; }
@@ -410,16 +364,9 @@ dialog.viewer::backdrop { background: rgba(8, 14, 11, 0.72); }
   .works { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 }
 @media (max-width: 760px) {
-  /* текст сверху, фото с карточками под ним */
+  /* текст сверху, фото под ним */
   .hero-grid { grid-template-columns: minmax(0, 1fr); gap: 32px; padding-block: 36px 32px; }
   .visual { justify-self: center; max-width: 400px; }
-  .vcard { padding: 9px 10px; font-size: 11px; }
-  .vcard .vt { font-size: 9.5px; margin-bottom: 6px; }
-  .vcard.cash { width: 44%; }
-  .vcard.mix { width: 55%; }
-  .vcard.cash { right: -2%; }
-  .mix-row { gap: 7px; }
-  .mix-row svg { width: 34px; }
   .figures { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .figure:nth-child(3) { padding-left: 0; border-left: 0; }
   .figure { padding-bottom: 18px; }
@@ -430,13 +377,13 @@ dialog.viewer::backdrop { background: rgba(8, 14, 11, 0.72); }
 @media (max-width: 560px) {
   body { font-size: 16px; }
   .lead { font-size: 17px; }
-  .deal .amount { font-size: 20px; }
-  .figure b { font-size: 21px; white-space: nowrap; }
+  .deal .amount { font-size: 18px; }
+  .figure b { font-size: clamp(17px, 5.2vw, 20px); white-space: nowrap; }
   .figure { padding-right: 12px; }
   .figure + .figure { padding-left: 14px; }
   .figure:nth-child(3) { padding-left: 0; }
   .works { grid-template-columns: minmax(0, 1fr); }
-  .timeline li { grid-template-columns: minmax(0, 1fr); gap: 2px; }
+  .timeline > li { grid-template-columns: minmax(0, 1fr); gap: 2px; }
   .contacts .btn, .hero-text .pill { flex: 1 1 100%; justify-content: center; }
   .topbar .name span { display: none; }
 }
@@ -451,69 +398,35 @@ dialog.viewer::backdrop { background: rgba(8, 14, 11, 0.72); }
 <header class="hero">
   <div class="wrap">
     <div class="topbar">
-      <a class="name" href="#top">Очир Насунов <span>· финансы и инвестиции</span></a>
+      <a class="name" href="#top">Очир Насунов <span>· CFO · проектное финансирование</span></a>
       <a class="pill" href="#contact">Связаться</a>
     </div>
 
     <div class="hero-grid">
     <div class="hero-text" id="top">
       <div class="dash"></div>
-      <span class="status">Открыт к предложениям · Москва</span>
-      <p class="role">Корпоративные финансы · инвестиции · привлечение капитала</p>
-      <h1>Привлекаю финансирование и строю финансовые службы</h1>
-      <p class="lead">20 лет в банке, инвестиционных фондах, институтах развития и на стороне компаний: АПК, производство, девелопмент, гостиничный бизнес. Автоматизирую учёт и анализ с помощью ИИ.</p>
+      <span class="status">Живу в Москве · открыт к предложениям</span>
+      <p class="role">Финансовый директор (CFO) · Руководитель проектного финансирования</p>
+      <h1>Выстраиваю финансовую службу и привлекаю финансирование</h1>
+      <p class="lead">Управленческий учёт, бюджетирование и казначейство с нуля, автоматизация отчётности с помощью нейросетей. Более 20 лет в инвестиционных фондах, банке, институтах развития и на позиции CFO в отраслях АПК, HoReCa и строительства.</p>
       <div class="contacts">
         <a class="pill" href="https://t.me/ochirnn" target="_blank" rel="noopener">Написать в Telegram</a>
+        <a class="pill outline" href="tel:+79615450553">+7 961 545-05-53</a>
         <button class="pill outline" type="button" id="copy-email" data-email="on@r140.ru">on@r140.ru <span class="hint">· скопировать</span></button>
+        <a class="pill outline" href="resume/Nasunov_Ochir_CV.pdf" download="Насунов Очир - резюме.pdf">Скачать резюме (PDF)</a>
       </div>
     </div>
 
     <div class="visual" aria-hidden="true">
-      <div class="photo-wrap"><img src="img/photo-teal.webp" alt="" width="1086" height="1448"></div>
-
-      <div class="vcard cash">
-        <span class="vt">Денежный поток</span>
-        <svg viewBox="0 0 200 90">
-          <line x1="0" y1="50" x2="200" y2="50" stroke="rgba(255,255,255,0.35)" stroke-width="1"/>
-          <rect x="8" y="50" width="16" height="36" rx="2" fill="rgba(255,255,255,0.38)"/>
-          <rect x="32" y="50" width="16" height="24" rx="2" fill="rgba(255,255,255,0.38)"/>
-          <rect x="56" y="41" width="16" height="9" rx="2" fill="#46C1C3"/>
-          <rect x="80" y="32" width="16" height="18" rx="2" fill="#46C1C3"/>
-          <rect x="104" y="26" width="16" height="24" rx="2" fill="#46C1C3"/>
-          <rect x="128" y="21.2" width="16" height="28.8" rx="2" fill="#46C1C3"/>
-          <rect x="152" y="17" width="16" height="33" rx="2" fill="#46C1C3"/>
-          <rect x="176" y="14" width="16" height="36" rx="2" fill="#46C1C3"/>
-        </svg>
-      </div>
-
-      <div class="vcard kpi">
-        <span class="vt">Финмодель проекта</span>
-        <table class="kpi-table">
-          <tr><td>NPV</td><td>1,2 млрд ₽</td></tr>
-          <tr><td>IRR</td><td>31,4%</td></tr>
-          <tr><td>DSCR мин.</td><td>1,35×</td></tr>
-          <tr><td>Окупаемость</td><td>5,5 лет</td></tr>
-        </table>
-      </div>
-
-      <div class="vcard mix">
-        <span class="vt">Финансирование</span>
-        <div class="mix-row">
-          <svg viewBox="0 0 60 60">
-            <circle cx="30" cy="30" r="24" fill="none" stroke="rgba(255,255,255,0.45)" stroke-width="9"/>
-            <circle cx="30" cy="30" r="24" fill="none" stroke="#46C1C3" stroke-width="9" stroke-dasharray="105.6 150.8" transform="rotate(-90 30 30)"/>
-          </svg>
-          <div class="mix-legend"><span>Заёмные средства <b>70%</b></span><span class="own">Собственные средства <b>30%</b></span></div>
-        </div>
-      </div>
+      <div class="photo-wrap"><img src="img/photo-gray.webp" alt="" width="1086" height="1448"></div>
     </div>
     </div>
 
     <div class="figures">
-      <div class="figure"><b>70+ млрд ₽</b><span>привлечено в проекты в роли консультанта</span></div>
-      <div class="figure"><b>3 млрд ₽</b><span>привлечено в роли финансового директора</span></div>
-      <div class="figure"><b>20+ лет</b><span>в инвестициях и корпоративных финансах</span></div>
-      <div class="figure"><b>ДипИФР</b><span>диплом ACCA по международной финансовой отчётности</span></div>
+      <div class="figure"><b>10+ компаний</b><span>где выстроил управленческий учёт с нуля</span></div>
+      <div class="figure"><b>19 млрд ₽</b><span>привлечено в проекты в роли консультанта</span></div>
+      <div class="figure"><b>2 млрд ₽</b><span>привлечено в роли финансового директора</span></div>
+      <div class="figure"><b>13 млрд ₽</b><span>долга реструктурировано</span></div>
     </div>
   </div>
 </header>
@@ -522,18 +435,31 @@ dialog.viewer::backdrop { background: rgba(8, 14, 11, 0.72); }
   <section class="block" id="deals">
     <div class="wrap block-grid">
       <div class="block-head">
-        <span class="label">Сделки</span>
-        <h2>Примеры проектов</h2>
+        <span class="label">Проекты</span>
+        <h2>Реализованные проекты</h2>
+        <p>Финмодели, бизнес-планы и презентации для банков, фондов и инвесторов, переговоры с кредиторами.</p>
       </div>
       <div class="block-body">
-        <div class="deals">
-          <div class="deal"><span class="label">Привлечено</span><span class="amount">1,5 млрд ₽</span><span class="rule"></span><span class="who">ИРРИКО</span></div>
-          <div class="deal"><span class="label">Привлечено</span><span class="amount">30 млн $</span><span class="rule"></span><span class="who">Skylink</span></div>
-          <div class="deal"><span class="label">Привлечено</span><span class="amount">1,3 млрд ₽</span><span class="rule"></span><span class="who">Вактек</span></div>
-          <div class="deal"><span class="label">Реструктуризация</span><span class="amount">3 млрд ₽</span><span class="rule"></span><span class="who">АкТех</span></div>
-          <div class="deal"><span class="label">Реструктуризация</span><span class="amount">10 млрд ₽</span><span class="rule"></span><span class="who">Sensorium Hall</span></div>
+        <div class="deal-group">
+          <h3><span>Новое финансирование</span><span class="total">21,3 млрд ₽</span></h3>
+          <div class="deal"><span class="who">Запуск двух агрохолдингов</span><span class="meta">КРСК · банки и инвесторы, в том числе иностранные</span><span class="amount">7,14 млрд ₽</span></div>
+          <div class="deal"><span class="who">Строительный технопарк</span><span class="meta">КРСК · банки и инвесторы</span><span class="amount">5,0 млрд ₽</span></div>
+          <div class="deal"><span class="who">Развитие сети сотового оператора в Москве</span><span class="meta">Финематика</span><span class="amount">2,16 млрд ₽</span></div>
+          <div class="deal"><span class="who">Проекты клиентов</span><span class="meta">ОН Финанс</span><span class="amount">2,0 млрд ₽</span></div>
+          <div class="deal"><span class="who">Сельхозхолдинг: овощехранилище и техника</span><span class="meta">ИРРИКО · на позиции CFO</span><span class="amount">1,5 млрд ₽</span></div>
+          <div class="deal"><span class="who">Запуск стартапов</span><span class="meta">Waarde Capital</span><span class="amount">1,0 млрд ₽</span></div>
+          <div class="deal"><span class="who">Развитие региональной сети сотового оператора</span><span class="meta">Финематика</span><span class="amount">0,9 млрд ₽</span></div>
+          <div class="deal"><span class="who">Оборотный кредит производителю автокомплектующих</span><span class="meta">Финематика</span><span class="amount">0,77 млрд ₽</span></div>
+          <div class="deal"><span class="who">Курортное предприятие</span><span class="meta">Кавминкурортресурсы · на позиции CFO</span><span class="amount">0,5 млрд ₽</span></div>
+          <div class="deal"><span class="who">Нефтеперерабатывающий завод</span><span class="meta">Финематика</span><span class="amount">0,36 млрд ₽</span></div>
         </div>
-        <p class="note">Финансовые модели, инвестиционные презентации и бизнес-планы для банков, фондов и институтов развития, переговоры с кредиторами.</p>
+        <div class="deal-group">
+          <h3><span>Реструктуризация долга</span><span class="total">13 млрд ₽</span></h3>
+          <div class="deal"><span class="who">Sensorium Hall</span><span class="meta">ОН Финанс</span><span class="amount">10,0 млрд ₽</span></div>
+          <div class="deal"><span class="who">Два текстильных холдинга</span><span class="meta">Финематика</span><span class="amount">2,0 млрд ₽</span></div>
+          <div class="deal"><span class="who">Производитель автокомплектующих</span><span class="meta">Финематика</span><span class="amount">1,0 млрд ₽</span></div>
+        </div>
+        <p class="note">Отдельно: в Агентстве Дальнего Востока сопровождение реализации нескольких инвестпроектов на общую сумму 37,5 млрд ₽.</p>
       </div>
     </div>
   </section>
@@ -548,7 +474,7 @@ dialog.viewer::backdrop { background: rgba(8, 14, 11, 0.72); }
         <div class="skills">
           <div class="skill">
             <h3>Финансовая служба с нуля</h3>
-            <p>Управленческий учёт, бюджетирование и казначейство: от структуры статей и регламентов до отчётов, по которым собственник принимает решения.</p>
+            <p>Управленческий учёт, бюджетирование и казначейство: от структуры статей и регламентов до отчётов, по которым собственник принимает решения. Выстроил с нуля в 10+ компаниях.</p>
           </div>
           <div class="skill">
             <h3>Привлечение финансирования</h3>
@@ -556,7 +482,7 @@ dialog.viewer::backdrop { background: rgba(8, 14, 11, 0.72); }
           </div>
           <div class="skill">
             <h3>Реструктуризация долга</h3>
-            <p>Анализ долговой нагрузки, новый график платежей и переговоры с банками. Опыт сделок на 3 и 10 млрд ₽.</p>
+            <p>Анализ долговой нагрузки, новый график платежей и переговоры с банками. Три проекта на 13 млрд ₽, крупнейший — 10 млрд ₽.</p>
           </div>
           <div class="skill">
             <h3>Инвестиционные проекты</h3>
@@ -571,36 +497,23 @@ dialog.viewer::backdrop { background: rgba(8, 14, 11, 0.72); }
     <div class="wrap block-grid">
       <div class="block-head">
         <span class="label">Автоматизация</span>
-        <h2>Инструменты, которые я собрал с ИИ</h2>
-        <p>Я не программист. Эти инструменты я сделал сам с помощью нейросетей и работаю с ними.</p>
+        <h2>Автоматизация финансовой службы</h2>
+        <p>Сам собираю инструменты для учёта и анализа с помощью нейросетей.</p>
       </div>
       <div class="block-body">
-        <article class="tool-main">
-          <div class="text">
+        <div class="tools">
+          <article class="tool">
             <span class="label">Учёт и отчётность</span>
             <h3>Система для управленческого учёта</h3>
-            <p>Google Таблицы со скриптом. Загружает из 1С карточки счетов 51 и 50, сверяет обороты с итогом, отсекает дубли и разносит операции по статьям по настраиваемым правилам. На выходе отчёт о движении денег и отчёт о прибылях и убытках по начислению.</p>
-            <p>Для собственника ИИ собирает отчёт план-факт в презентацию с разбором отклонений по объектам.</p>
-          </div>
-        </article>
-
-        <div class="tools">
+            <p>Загружает из 1С выписки по расчётным счетам и кассе, сверяет обороты, отсекает дубли и разносит операции по статьям по настраиваемым правилам. На выходе отчёт о движении денег, отчёт о прибылях и убытках по начислению и дашборд с ключевыми показателями. Отчёт план-факт для собственника собирается в презентацию с разбором отклонений.</p>
+          </article>
           <article class="tool">
             <span class="label">Инвестпроекты</span>
             <h3>Финмодель инвестпроекта</h3>
-            <p>Навык для нейросети: строит квартальную финансовую модель в Excel по образцу модели реального проекта. Налоги, кредиты, три формы отчётности, FCFF, WACC, NPV и IRR, DSCR и чувствительность. Сначала задаёт вопросы по проекту, недостающие рыночные параметры ищет в открытых источниках со ссылками.</p>
+            <p>По ответам на вопросы о проекте строит квартальную финансовую модель в Excel: налоги, кредиты, три формы отчётности, FCFF, WACC, NPV и IRR, DSCR и чувствительность. Недостающие рыночные параметры подбирает из открытых источников со ссылками.</p>
           </article>
-          <article class="tool">
-            <span class="label">Анализ контрагентов</span>
-            <h3>Досье на компанию</h3>
-            <p>Telegram-бот: по названию или ИНН забирает бухгалтерскую отчётность из ГИР БО ФНС и готовит записку о финансовом положении компании. Пригождается перед переговорами и встречами.</p>
-          </article>
-          <article class="tool">
-            <span class="label">Мониторинг</span>
-            <h3>Фильтр вакансий hh.ru</h3>
-            <p>Два Telegram-бота: каждое утро присылают свежие вакансии, отобранные и оценённые по моему профилю. Работают по расписанию без моего участия.</p>
-          </article>
-        </div>      </div>
+        </div>
+      </div>
     </div>
   </section>
 
@@ -662,16 +575,25 @@ dialog.viewer::backdrop { background: rgba(8, 14, 11, 0.72); }
       </div>
       <div class="block-body">
         <ol class="timeline">
-          <li><span class="years">2024–2026</span><div><span class="org">ГК МФ-Холдинг</span><span class="pos">Финансовый директор</span><span class="what">Отели, рестораны, строительство · Элиста</span></div></li>
-          <li><span class="years">2024–2026</span><div><span class="org">Waarde Capital</span><span class="pos">Инвестиционный менеджер, по совместительству</span><span class="what">Инвестиционный фонд · Москва</span></div></li>
-          <li><span class="years">2019–2024</span><div><span class="org">ОН Финанс</span><span class="pos">Собственная консалтинговая практика</span><span class="what">Привлечение финансирования и постановка управленческого учёта для клиентов · Элиста</span></div></li>
-          <li><span class="years">2018–2019</span><div><span class="org">Агентство Дальнего Востока по привлечению инвестиций и поддержке экспорта</span><span class="pos">Управляющий директор инвестиционного блока</span><span class="what">Институт развития ДФО · Москва</span></div></li>
-          <li><span class="years">2015–2018</span><div><span class="org">ГК ИРРИКО</span><span class="pos">Финансовый директор</span><span class="what">Сельхозхолдинг, 21 тыс. га орошаемого земледелия · Ставрополь</span></div></li>
-          <li><span class="years">2013–2015</span><div><span class="org">АО «Кавминкурортресурсы»</span><span class="pos">Финансовый директор, по совместительству</span><span class="what">Добыча минеральной воды · Ессентуки</span></div></li>
-          <li><span class="years">2011–2015</span><div><span class="org">АО «Корпорация развития Северного Кавказа»</span><span class="pos">Менеджер управления инвестиционного анализа</span><span class="what">Инвестиционный фонд развития СКФО</span></div></li>
-          <li><span class="years">2009–2011</span><div><span class="org">ПАО «Транскапиталбанк»</span><span class="pos">Начальник отдела анализа проектов, заместитель начальника управления проектного финансирования</span><span class="what">Коммерческий банк · Москва</span></div></li>
-          <li><span class="years">2004–2009</span><div><span class="org">Финематика</span><span class="pos">Руководитель направления финансового моделирования</span><span class="what">Финансовый консалтинг · Москва</span></div></li>
-          <li><span class="years">2002–2004</span><div><span class="org">Verysell Group</span><span class="pos">Менеджер по расчётам с поставщиками</span><span class="what">Системный интегратор · Москва</span></div></li>
+          <li><span class="years">мар 2024 — сен 2026</span><div><span class="org">ГК Холдинг (многопрофильный холдинг)</span><span class="pos">Финансовый директор управляющей компании холдинга</span><span class="what">Отели, рестораны, строительство · Элиста</span>
+            <ul class="duties"><li>Финансовые планы, прогнозные балансы и бюджеты компаний группы, контроль исполнения</li><li>Привлечение финансирования: банки и лизинговые компании</li><li>Консолидированная отчётность группы, отчёты и презентации для руководства</li></ul></div></li>
+          <li><span class="years">сен 2024 — июн 2026</span><div><span class="org">Waarde Capital</span><span class="pos">Инвестиционный менеджер, по совместительству</span><span class="what">Инвестиционная компания · Москва</span>
+            <ul class="duties"><li>Финансовые модели, презентации и бизнес-планы проектов</li><li>Привлечение долгового финансирования и инвестиций</li><li>Управление инвестиционными проектами</li></ul></div></li>
+          <li><span class="years">июн 2019 — мар 2024</span><div><span class="org">ОН Финанс</span><span class="pos">Инвестиционный директор, собственная консалтинговая практика</span><span class="what">Финансовый консалтинг · Элиста</span>
+            <ul class="duties"><li>Привлечение финансирования под ключ: бизнес-план, финансовая модель, презентация</li><li>Постановка финансового учёта, бюджетирования и планирования у клиентов</li></ul></div></li>
+          <li><span class="years">мар 2018 — июн 2019</span><div><span class="org">Агентство Дальнего Востока по привлечению инвестиций и поддержке экспорта</span><span class="pos">Управляющий директор инвестиционного блока</span><span class="what">Институт развития ДФО · Москва</span>
+            <ul class="duties"><li>Привлечение инвестиций в проекты</li><li>Структурирование инвестиционных проектов и сделок M&amp;A</li><li>Контроль реализации проектов</li></ul></div></li>
+          <li><span class="years">дек 2015 — дек 2017</span><div><span class="org">ГК ИРРИКО</span><span class="pos">Финансовый директор</span><span class="what">Сельхозхолдинг, 21 тыс. га орошаемого земледелия · Ставрополь</span>
+            <ul class="duties"><li>Руководил финансово-экономическим блоком группы, 12 человек</li><li>Кредитный портфель вырос с 0,4 до 1,9 млрд ₽: работа с банками и лизинговыми компаниями</li><li>Финансовые планы, прогнозные балансы, бюджеты и отчёты акционерам</li></ul></div></li>
+          <li><span class="years">окт 2013 — ноя 2015</span><div><span class="org">АО «Кавминкурортресурсы»</span><span class="pos">Финансовый директор, по совместительству</span><span class="what">Добыча минеральной воды · Ессентуки</span>
+            <ul class="duties"><li>Руководил финансовой службой, бухгалтерией, планово-экономическим отделом и закупками, 14 человек</li><li>Финансовая политика, баланс собственного и заёмного капитала, кредиты и размещение свободных средств</li><li>Финансовые планы и бюджеты движения денежных средств</li></ul></div></li>
+          <li><span class="years">авг 2011 — дек 2015</span><div><span class="org">АО «Корпорация развития Северного Кавказа»</span><span class="pos">Инвестиционный менеджер, VP</span><span class="what">Инвестиционный фонд развития СКФО · Ессентуки</span>
+            <ul class="duties"><li>Анализ инвестиционных проектов, участие в due diligence</li><li>Финансовые модели и аналитика по проектам</li><li>Операционное управление инвестпроектами</li></ul></div></li>
+          <li><span class="years">дек 2009 — авг 2011</span><div><span class="org">ПАО «Транскапиталбанк»</span><span class="pos">Начальник отдела анализа проектов, заместитель начальника управления проектного финансирования</span><span class="what">Коммерческий банк · Москва</span>
+            <ul class="duties"><li>Анализ и согласование заявок на проектное финансирование</li><li>Финансовые модели, ТЭО и презентации проектов для руководства банка</li><li>Организация финансирования и мониторинг заёмщиков</li></ul></div></li>
+          <li><span class="years">июн 2004 — дек 2009</span><div><span class="org">ГК «Финематика»</span><span class="pos">Старший финансовый аналитик, руководитель направления финансового моделирования</span><span class="what">Финансовый консалтинг · Москва</span>
+            <ul class="duties"><li>Финансовые модели, бизнес-планы и презентации для банков и инвесторов</li><li>Привлечение долгового финансирования и инвестиций</li><li>Руководство отделом финансового моделирования</li></ul></div></li>
+          <li><span class="years">июл 2002 — июн 2004</span><div><span class="org">Verysell Group</span><span class="pos">Менеджер по расчётам с поставщиками</span><span class="what">Системный интегратор · Москва</span></div></li>
         </ol>
       </div>
     </div>
@@ -690,7 +612,6 @@ dialog.viewer::backdrop { background: rgba(8, 14, 11, 0.72); }
             <ul>
               <li>Финансовая академия при Правительстве РФ<span>«Финансы и кредит», 1998–2003</span></li>
               <li>Диплом ACCA по МСФО (ДипИФР)<span>2017</span></li>
-              <li>Физико-математическая гимназия<span>Золотая медаль, 1998</span></li>
             </ul>
           </div>
           <div>
@@ -700,11 +621,6 @@ dialog.viewer::backdrop { background: rgba(8, 14, 11, 0.72); }
               <span class="chip">1С</span><span class="chip">БИТ.Финанс</span><span class="chip">Google Таблицы</span>
               <span class="chip">Нейросети</span><span class="chip">ИИ-агенты</span><span class="chip">Консультант+, Гарант</span>
             </div>
-            <h3 style="margin-top:20px">Языки</h3>
-            <ul>
-              <li>Русский<span>родной</span></li>
-              <li>Английский<span>Intermediate</span></li>
-            </ul>
           </div>
         </div>
       </div>
@@ -731,11 +647,14 @@ dialog.viewer::backdrop { background: rgba(8, 14, 11, 0.72); }
         <h2>Связаться</h2>
       </div>
       <div class="block-body contact-card">
-        <p class="big">Рассматриваю позиции в корпоративных финансах и инвестициях в Москве. Буду рад разговору.</p>
+        <p class="big">Рассматриваю позиции финансового директора и руководителя проектного финансирования. Живу в Москве. Буду рад разговору.</p>
         <div class="contacts">
           <a class="btn" href="https://t.me/ochirnn" target="_blank" rel="noopener">Telegram @ochirnn</a>
+          <a class="btn ghost" href="tel:+79615450553">+7 961 545-05-53</a>
+          <a class="btn ghost" href="resume/Nasunov_Ochir_CV.pdf" download="Насунов Очир - резюме.pdf">Скачать резюме (PDF)</a>
           <button class="btn ghost" type="button" id="copy-email-2" data-email="on@r140.ru">on@r140.ru <span class="hint">· скопировать</span></button>
         </div>
+        <p class="note">Рекомендации по запросу: управляющий партнёр Waarde Capital, генеральный директор АО «Кавминкурортресурсы».</p>
         <div class="copy-state" id="copy-state" aria-live="polite"></div>
       </div>
     </div>
@@ -745,7 +664,7 @@ dialog.viewer::backdrop { background: rgba(8, 14, 11, 0.72); }
 <footer>
   <div class="wrap">
     <span>© 2026 Очир Насунов</span>
-    <span>Сайт собран с помощью ИИ · <a href="https://github.com/Richo1010" target="_blank" rel="noopener">GitHub</a></span>
+    <span>Москва · Telegram @ochirnn · on@r140.ru</span>
   </div>
 </footer>
 
