@@ -81,20 +81,71 @@ a:focus-visible, button:focus-visible { outline: 2px solid var(--accent); outlin
     radial-gradient(900px 500px at 15% 110%, rgba(70, 193, 195, 0.18), transparent 60%),
     linear-gradient(115deg, var(--navy-1) 0%, var(--navy-2) 50%, var(--navy-3) 100%);
 }
-.hero-photo {
-  position: absolute;
-  top: 0; right: 0; bottom: 0;
-  width: 50%;
-  -webkit-mask-image: linear-gradient(to right, transparent 0%, #000 45%);
-  mask-image: linear-gradient(to right, transparent 0%, #000 45%);
+.hero .wrap { position: relative; }
+.hero-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.05fr) minmax(0, 0.95fr);
+  gap: 48px;
+  align-items: center;
+  padding-block: 56px 48px;
 }
-.hero-photo img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 30%; }
-.hero-photo::after {
+
+/* Фото в окружении «рабочих» карточек: денежный поток, показатели модели, структура финансирования (иллюстрация, не данные клиентов) */
+.visual {
+  position: relative;
+  width: 100%;
+  max-width: 500px;
+  aspect-ratio: 1 / 1.32;
+  justify-self: end;
+}
+/* фото на бирюзовом фоне; сверху добавлен тот же бирюзовый, чтобы голова не упиралась в край,
+   а края всего блока плавно растворяются в синем */
+.photo-wrap {
+  position: absolute;
+  left: 4%; bottom: 0;
+  width: 92%;
+  padding-top: 10%;
+  background: #38A6AF;
+  -webkit-mask-image: radial-gradient(ellipse 50% 50% at 50% 50%, #000 28%, rgba(0, 0, 0, 0.88) 42%, rgba(0, 0, 0, 0.62) 58%, rgba(0, 0, 0, 0.32) 76%, rgba(0, 0, 0, 0.1) 90%, transparent 100%);
+  mask-image: radial-gradient(ellipse 50% 50% at 50% 50%, #000 28%, rgba(0, 0, 0, 0.88) 42%, rgba(0, 0, 0, 0.62) 58%, rgba(0, 0, 0, 0.32) 76%, rgba(0, 0, 0, 0.1) 90%, transparent 100%);
+}
+.photo-wrap img { display: block; width: 100%; height: auto; }
+/* к краям бирюзовый постепенно темнеет до синего фона страницы */
+.photo-wrap::after {
   content: "";
   position: absolute; inset: 0;
-  background: linear-gradient(to top, rgba(7, 30, 51, 0.85) 0%, rgba(7, 30, 51, 0) 40%);
+  background: radial-gradient(ellipse 50% 50% at 50% 50%, transparent 35%, rgba(11, 52, 82, 0.35) 65%, rgba(11, 52, 82, 0.75) 100%);
 }
-.hero .wrap { position: relative; }
+.vcard {
+  position: absolute;
+  z-index: 1;
+  padding: 12px 14px;
+  border-radius: 10px;
+  background: rgba(10, 40, 64, 0.72);
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  -webkit-backdrop-filter: blur(8px);
+  backdrop-filter: blur(8px);
+  box-shadow: 0 14px 34px rgba(0, 0, 0, 0.28);
+  color: var(--hero-ink);
+  font: 400 12px/1.35 var(--font-body);
+}
+.vcard .vt { display: block; margin-bottom: 8px; font: 500 10.5px/1.3 var(--font-mono); letter-spacing: 0.08em; text-transform: uppercase; color: var(--hero-muted); }
+.vcard svg { display: block; width: 100%; height: auto; }
+.vcard.cash { right: -4%; top: 50%; width: 38%; }
+.vcard.kpi { left: 0; bottom: 4%; width: 44%; }
+.vcard.mix { right: -2%; bottom: 4%; width: 52%; }
+.kpi-table { width: 100%; border-collapse: collapse; font-variant-numeric: tabular-nums; }
+.kpi-table td { padding: 3px 0; border-top: 1px solid rgba(255, 255, 255, 0.1); }
+.kpi-table tr:first-child td { border-top: 0; }
+.kpi-table td:last-child { text-align: right; font-weight: 600; color: var(--hero-teal); white-space: nowrap; padding-left: 8px; }
+.mix-row { display: flex; align-items: center; gap: 10px; }
+.mix-row svg { width: 46px; flex: none; }
+.mix-legend { display: flex; flex-direction: column; gap: 5px; }
+.mix-legend span::before { content: ""; display: inline-block; width: 8px; height: 8px; border-radius: 2px; margin-right: 5px; background: var(--hero-teal); }
+.mix-legend span.own::before { background: rgba(255, 255, 255, 0.45); }
+/* проценты на отдельной строке, чтобы обе подписи выглядели одинаково */
+.mix-legend b { display: block; padding-left: 13px; font-weight: 600; color: var(--hero-teal); white-space: nowrap; }
+.mix-legend span.own b { color: var(--hero-ink); }
 .topbar {
   display: flex; justify-content: space-between; align-items: center; gap: 16px;
   padding-block: 22px;
@@ -121,7 +172,6 @@ a:focus-visible, button:focus-visible { outline: 2px solid var(--accent); outlin
 
 .hero-text {
   max-width: 600px;
-  padding-block: 72px 56px;
   display: flex; flex-direction: column; gap: 20px;
   min-width: 0;
 }
@@ -360,17 +410,16 @@ dialog.viewer::backdrop { background: rgba(8, 14, 11, 0.72); }
   .works { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 }
 @media (max-width: 760px) {
-  /* фото сверху на всю ширину и растворяется в синем фоне */
-  .hero-photo {
-    position: relative;
-    width: 100%; height: 360px;
-    -webkit-mask-image: linear-gradient(to bottom, #000 55%, transparent 100%);
-    mask-image: linear-gradient(to bottom, #000 55%, transparent 100%);
-  }
-  .hero-photo::after { background: linear-gradient(to bottom, rgba(7, 30, 51, 0.7) 0%, rgba(7, 30, 51, 0) 28%); }
-  .hero .topbar { position: absolute; top: 0; left: 0; right: 0; padding-left: max(20px, env(safe-area-inset-left, 0px)); padding-right: max(20px, env(safe-area-inset-right, 0px)); border-bottom: 0; }
-  .hero .wrap { position: static; }
-  .hero-text { padding-block: 0 36px; margin-top: -40px; position: relative; }
+  /* текст сверху, фото с карточками под ним */
+  .hero-grid { grid-template-columns: minmax(0, 1fr); gap: 32px; padding-block: 36px 32px; }
+  .visual { justify-self: center; max-width: 400px; }
+  .vcard { padding: 9px 10px; font-size: 11px; }
+  .vcard .vt { font-size: 9.5px; margin-bottom: 6px; }
+  .vcard.cash { width: 44%; }
+  .vcard.mix { width: 55%; }
+  .vcard.cash { right: -2%; }
+  .mix-row { gap: 7px; }
+  .mix-row svg { width: 34px; }
   .figures { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .figure:nth-child(3) { padding-left: 0; border-left: 0; }
   .figure { padding-bottom: 18px; }
@@ -400,13 +449,13 @@ dialog.viewer::backdrop { background: rgba(8, 14, 11, 0.72); }
 <body>
 
 <header class="hero">
-  <div class="hero-photo"><img src="img/photo-hero.jpg" alt="Очир Насунов на фоне заката в калмыцкой степи" width="1000" height="1068"></div>
   <div class="wrap">
     <div class="topbar">
       <a class="name" href="#top">Очир Насунов <span>· финансы и инвестиции</span></a>
       <a class="pill" href="#contact">Связаться</a>
     </div>
 
+    <div class="hero-grid">
     <div class="hero-text" id="top">
       <div class="dash"></div>
       <span class="status">Открыт к предложениям · Москва</span>
@@ -417,6 +466,47 @@ dialog.viewer::backdrop { background: rgba(8, 14, 11, 0.72); }
         <a class="pill" href="https://t.me/ochirnn" target="_blank" rel="noopener">Написать в Telegram</a>
         <button class="pill outline" type="button" id="copy-email" data-email="on@r140.ru">on@r140.ru <span class="hint">· скопировать</span></button>
       </div>
+    </div>
+
+    <div class="visual" aria-hidden="true">
+      <div class="photo-wrap"><img src="img/photo-teal.webp" alt="" width="1086" height="1448"></div>
+
+      <div class="vcard cash">
+        <span class="vt">Денежный поток</span>
+        <svg viewBox="0 0 200 90">
+          <line x1="0" y1="50" x2="200" y2="50" stroke="rgba(255,255,255,0.35)" stroke-width="1"/>
+          <rect x="8" y="50" width="16" height="36" rx="2" fill="rgba(255,255,255,0.38)"/>
+          <rect x="32" y="50" width="16" height="24" rx="2" fill="rgba(255,255,255,0.38)"/>
+          <rect x="56" y="41" width="16" height="9" rx="2" fill="#46C1C3"/>
+          <rect x="80" y="32" width="16" height="18" rx="2" fill="#46C1C3"/>
+          <rect x="104" y="26" width="16" height="24" rx="2" fill="#46C1C3"/>
+          <rect x="128" y="21.2" width="16" height="28.8" rx="2" fill="#46C1C3"/>
+          <rect x="152" y="17" width="16" height="33" rx="2" fill="#46C1C3"/>
+          <rect x="176" y="14" width="16" height="36" rx="2" fill="#46C1C3"/>
+        </svg>
+      </div>
+
+      <div class="vcard kpi">
+        <span class="vt">Финмодель проекта</span>
+        <table class="kpi-table">
+          <tr><td>NPV</td><td>1,2 млрд ₽</td></tr>
+          <tr><td>IRR</td><td>31,4%</td></tr>
+          <tr><td>DSCR мин.</td><td>1,35×</td></tr>
+          <tr><td>Окупаемость</td><td>5,5 лет</td></tr>
+        </table>
+      </div>
+
+      <div class="vcard mix">
+        <span class="vt">Финансирование</span>
+        <div class="mix-row">
+          <svg viewBox="0 0 60 60">
+            <circle cx="30" cy="30" r="24" fill="none" stroke="rgba(255,255,255,0.45)" stroke-width="9"/>
+            <circle cx="30" cy="30" r="24" fill="none" stroke="#46C1C3" stroke-width="9" stroke-dasharray="105.6 150.8" transform="rotate(-90 30 30)"/>
+          </svg>
+          <div class="mix-legend"><span>Заёмные средства <b>70%</b></span><span class="own">Собственные средства <b>30%</b></span></div>
+        </div>
+      </div>
+    </div>
     </div>
 
     <div class="figures">
